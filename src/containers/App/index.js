@@ -1,0 +1,53 @@
+import './app.scss'
+import logo from '../../common/img/logo.svg'
+
+import React from 'react'
+import { connect } from 'react-redux'
+import { hot } from 'react-hot-loader'
+import { withRouter, Link } from 'react-router-dom'
+
+import routes from '../../configureRoutes'
+
+import RouteWithSubRoutes from '../../components/RouteWithSubRoutes'
+
+import { todoAction } from './actions'
+
+class App extends React.Component {
+  _dispatch = () => {
+    this.props.dispatch(todoAction())
+    this.props.history.push('/')
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img onClick={this._dispatch} src={logo} className="App-logo" alt="logo" />
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+
+          <nav className="nav">
+            <Link to="todo">todo</Link>
+            <Link to="another">another</Link>
+          </nav>
+        </header>
+
+        <main className="App-main">
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </main>
+      </div>
+    )
+  }
+}
+
+const HotExportedApp = hot(module)(App)
+const connectedApp = connect()(HotExportedApp)
+export default withRouter(connectedApp)
