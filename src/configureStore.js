@@ -3,7 +3,7 @@ import { routerMiddleware } from 'connected-react-router'
 import { compose, createStore, applyMiddleware } from 'redux'
 
 import sagas from './combineSagas'
-import combineReducers from './combReducers'
+import injectAsyncReducer from './injectAsyncReducer'
 
 export default history => {
   const composeEnhancers =
@@ -17,7 +17,7 @@ export default history => {
 
   const middlewareChain = applyMiddleware(routerMiddleware(history), sagaMiddleware)
 
-  const reducer = combineReducers(history)
+  const reducer = injectAsyncReducer()
   const enhancer = composeEnhancers(middlewareChain)
 
   const store = createStore(reducer, enhancer)

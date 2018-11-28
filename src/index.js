@@ -3,29 +3,19 @@ import './common/scss/base.scss'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import React, { Suspense } from 'react'
+import { history } from './configureHistory'
 import { ConnectedRouter } from 'connected-react-router'
-import createBrowserHistory from 'history/createBrowserHistory'
 
 import configureStore from './configureStore'
+import configureRoutes from './configureRoutes'
 import * as serviceWorker from './serviceWorker'
 
-import App from './containers/App'
+import App from './containers/App/App'
 import Spinner from './components/Spinner'
-import routes from './configureRoutes'
-import combineReducers from './combReducers'
-
-const history = createBrowserHistory()
 
 const store = configureStore(history)
 
-history.listen((location, action) => {
-  console.log(location, action, routes, history)
-
-  routes.forEach(route => {
-    route.path === location.pathname &&
-      store.replaceReducer(combineReducers(history, route.reducer))
-  })
-})
+export const routes = configureRoutes(store)
 
 ReactDOM.render(
   <Provider store={store}>

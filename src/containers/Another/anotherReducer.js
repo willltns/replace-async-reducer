@@ -1,4 +1,4 @@
-import { APP_TODO } from '../App/consts'
+import { APP_TODO } from '../App/appConsts'
 
 export const anotherReducer = (state = { another: 'ANOTHER' }, action) => {
   switch (action.type) {

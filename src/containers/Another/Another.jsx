@@ -2,11 +2,7 @@ import React from 'react'
 
 class Another extends React.Component {
   render() {
-    return (
-      <div>
-        another...
-      </div>
-    )
+    return <div>another...</div>
   }
 }
 

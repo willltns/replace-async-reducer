@@ -1,10 +1,11 @@
-import { take, select } from 'redux-saga/effects'
+import { take, select, put } from 'redux-saga/effects'
 
-import { APP_TODO } from './consts'
+import { APP_TODO } from './appConsts'
 
 function* todoSaga() {
   while (true) {
-    yield take(APP_TODO)
+    const action = yield take(APP_TODO)
+    console.log(action)
 
     const state = yield select(state => state.todo)
 

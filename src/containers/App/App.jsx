@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
 import { withRouter, Link } from 'react-router-dom'
 
-import routes from '../../configureRoutes'
+import { routes } from '../../index'
 
 import RouteWithSubRoutes from '../../components/RouteWithSubRoutes'
 
@@ -35,9 +35,9 @@ class App extends React.Component {
           </a>
 
           <nav className="nav">
-            <Link to="todo">todo</Link>
-            <Link to="another">another</Link>
-            <Link to="dnd">dnd</Link>
+            <Link to="/todo">todo</Link>
+            <Link to="/another">another</Link>
+            <Link to="/dnd">dnd</Link>
           </nav>
         </header>
 

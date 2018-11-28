@@ -1,10 +1,9 @@
-import { APP_TODO } from '../App/consts'
+import { APP_TODO } from '../App/appConsts'
 
 export const todoReducer = (state = { todo: 'TODO' }, action) => {
   switch (action.type) {
     case APP_TODO:
-      console.log('reducer congratulations!')
-      return state
+      return { ...state, asy: action.payload }
     default:
       return state
   }
