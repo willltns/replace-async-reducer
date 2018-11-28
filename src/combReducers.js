@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 
-import { todoReducer } from './containers/App/reducer'
+import { appReducer } from './containers/App/appReducer'
 
-export default history =>
+export default (history, asyncReducer) =>
   combineReducers({
     router: connectRouter(history),
-    todo: todoReducer,
+    app: appReducer,
+    ...asyncReducer,
   })

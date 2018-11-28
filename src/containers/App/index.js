@@ -11,6 +11,8 @@ import routes from '../../configureRoutes'
 import RouteWithSubRoutes from '../../components/RouteWithSubRoutes'
 
 import { todoAction } from './actions'
+import { DragDropContextProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 
 class App extends React.Component {
   _dispatch = () => {
@@ -35,13 +37,16 @@ class App extends React.Component {
           <nav className="nav">
             <Link to="todo">todo</Link>
             <Link to="another">another</Link>
+            <Link to="dnd">dnd</Link>
           </nav>
         </header>
 
         <main className="App-main">
-          {routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-          ))}
+          <DragDropContextProvider backend={HTML5Backend}>
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
+          </DragDropContextProvider>
         </main>
       </div>
     )

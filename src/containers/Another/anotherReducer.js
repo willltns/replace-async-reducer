@@ -1,6 +1,6 @@
-import { APP_TODO } from './consts'
+import { APP_TODO } from '../App/consts'
 
-export const todoReducer = (state = { to: 'do' }, action) => {
+export const anotherReducer = (state = { another: 'ANOTHER' }, action) => {
   switch (action.type) {
     case APP_TODO:
       console.log('reducer congratulations!')

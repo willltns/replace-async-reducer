@@ -11,10 +11,21 @@ import * as serviceWorker from './serviceWorker'
 
 import App from './containers/App'
 import Spinner from './components/Spinner'
+import routes from './configureRoutes'
+import combineReducers from './combReducers'
 
 const history = createBrowserHistory()
 
 const store = configureStore(history)
+
+history.listen((location, action) => {
+  console.log(location, action, routes, history)
+
+  routes.forEach(route => {
+    route.path === location.pathname &&
+      store.replaceReducer(combineReducers(history, route.reducer))
+  })
+})
 
 ReactDOM.render(
   <Provider store={store}>
