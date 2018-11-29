@@ -1,4 +1,4 @@
-import { take, select, put } from 'redux-saga/effects'
+import { take, select } from 'redux-saga/effects'
 
 import { APP_TODO } from './appConsts'
 
