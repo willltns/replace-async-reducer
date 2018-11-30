@@ -4,12 +4,11 @@ import { APP_TODO } from './appConsts'
 
 function* todoSaga() {
   while (true) {
-    const action = yield take(APP_TODO)
-    console.log(action)
+    yield take(APP_TODO)
 
     const state = yield select(state => state.todo)
 
-    console.log('saga congratulations!', state)
+    console.log('todo saga...', state)
   }
 }
 
