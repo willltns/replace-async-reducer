@@ -2,7 +2,7 @@ import createSagaMiddleware from 'redux-saga'
 import { routerMiddleware } from 'connected-react-router'
 import { compose, createStore, applyMiddleware } from 'redux'
 
-import sagas from './combineSagas'
+import rootSaga from './combineSagas'
 import injectAsyncReducer from './injectAsyncReducer'
 
 export default history => {
@@ -22,7 +22,7 @@ export default history => {
 
   const store = createStore(reducer, enhancer)
 
-  sagaMiddleware.run(...sagas)
+  sagaMiddleware.run(rootSaga)
 
   return store
 }
